@@ -65,36 +65,10 @@ Response:
 
 ---
 
-## Postman Test
+#### Postman Test
 
 ![Postman Test](images/postman_test_1.png)
 
-
-### Pairwise Similarity
-
-**POST** `/api/similarity/pairwise`
-
-Request:
-
-```json
-{
-  "texts": [
-    "Machine learning is powerful",
-    "Artificial intelligence is powerful",
-    "I like football"
-  ]
-}
-```
-
-Response:
-
-```json
-{
-  "pairs": [...]
-}
-```
-
----
 
 ### Text Clustering
 
@@ -118,8 +92,37 @@ Response:
 
 ```json
 {
-  "clusters": [...]
+    "assignments": [
+        0,
+        0,
+        1,
+        1
+    ],
+    "clusters": {
+        "0": [
+            {
+                "index": 0,
+                "text": "Machine learning is useful"
+            },
+            {
+                "index": 1,
+                "text": "Artificial intelligence is transforming industries"
+            }
+        ],
+        "1": [
+            {
+                "index": 2,
+                "text": "Football is a popular sport"
+            },
+            {
+                "index": 3,
+                "text": "Cricket is widely played"
+            }
+        ]
+    },
+    "n_clusters": 2
 }
+
 ```
 
 ---
@@ -145,8 +148,25 @@ Response:
 
 ```json
 {
-  "matches": [...]
+    "flagged_count": 1,
+    "results": [
+        {
+            "candidate_index": 0,
+            "flagged": true,
+            "similarity_score": 0.9138,
+            "text": "Machine learning is changing technology."
+        },
+        {
+            "candidate_index": 1,
+            "flagged": false,
+            "similarity_score": 0.0357,
+            "text": "I like playing football."
+        }
+    ],
+    "threshold": 0.75,
+    "total_candidates": 2
 }
+
 ```
 
 ## Installation
