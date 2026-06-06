@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from services.similarity import compute_similarity, pairwise_similarity
 from services.clustering import cluster_texts
 from services.plagiarism import detect_plagiarism
-
+import os
 app = Flask(__name__)
 
 def bad_request(msg):
@@ -57,4 +57,5 @@ def interpret(score):
 if __name__ == "__main__":
     from services.embedder import get_model
     get_model()
-    app.run(debug=False, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
