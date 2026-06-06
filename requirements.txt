@@ -4,3 +4,4 @@ scikit-learn
 numpy
 scipy
 gunicorn
+torch --index-url https://download.pytorch.org/whl/cpu

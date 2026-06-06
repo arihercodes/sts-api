@@ -1,7 +1,8 @@
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+#MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "paraphrase-MiniLM-L3-v2"
 
 # Load immediately when the module is imported
 print(f"Loading model: {MODEL_NAME} ...")
