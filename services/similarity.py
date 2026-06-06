@@ -3,7 +3,6 @@ from .embedder import encode
 
 def compute_similarity(text1: str, text2: str) -> float:
     embeddings = encode([text1, text2])
-    # With normalized embeddings, dot product = cosine similarity
     score = float(np.dot(embeddings[0], embeddings[1]))
     return round(max(0.0, min(1.0, score)), 4)
 

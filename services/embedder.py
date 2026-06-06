@@ -4,14 +4,11 @@ import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-#MODEL_NAME = "all-MiniLM-L6-v2"
-#MODEL_NAME = "paraphrase-MiniLM-L3-v2"
-MODEL_NAME = "sentence-transformers/paraphrase-albert-small-v2"
-
+MODEL_NAME = "paraphrase-MiniLM-L3-v2"
 
 print(f"Loading model: {MODEL_NAME} ...")
 _model = SentenceTransformer(MODEL_NAME, device="cpu")
-print("Model loaded.")
+print("Model loaded successfully.")
 
 def get_model():
     return _model

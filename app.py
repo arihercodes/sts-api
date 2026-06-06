@@ -3,6 +3,7 @@ from services.similarity import compute_similarity, pairwise_similarity
 from services.clustering import cluster_texts
 from services.plagiarism import detect_plagiarism
 import os
+
 app = Flask(__name__)
 
 def bad_request(msg):
@@ -30,7 +31,7 @@ def cluster():
     texts = data.get("texts", [])
     if len(texts) < 2:
         return bad_request("Provide at least 2 texts")
-    n = data.get("n_clusters")  # optional
+    n = data.get("n_clusters")
     return jsonify(cluster_texts(texts, n))
 
 @app.route("/api/plagiarism", methods=["POST"])
@@ -38,7 +39,7 @@ def plagiarism():
     data = request.get_json()
     source = data.get("source")
     candidates = data.get("candidates", [])
-    threshold = data.get("threshold", 0.85)
+    threshold = data.get("threshold", 0.75)
     if not source or not candidates:
         return bad_request("Provide 'source' and 'candidates' list")
     return jsonify(detect_plagiarism(source, candidates, threshold))
@@ -55,7 +56,5 @@ def interpret(score):
     return "dissimilar"
 
 if __name__ == "__main__":
-    from services.embedder import get_model
-    get_model()
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 7860))
     app.run(host="0.0.0.0", port=port, debug=False)

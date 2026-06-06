@@ -1,7 +1,7 @@
 import numpy as np
 from .embedder import encode
 
-DEFAULT_THRESHOLD = 0.85  # tune this to your use case
+DEFAULT_THRESHOLD = 0.75
 
 def detect_plagiarism(source: str, candidates: list[str], threshold: float = DEFAULT_THRESHOLD) -> dict:
     all_texts = [source] + candidates
